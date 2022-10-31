@@ -1,15 +1,14 @@
 import type { NextPage } from 'next'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import AboutPage from './about'
-import ProjectsPage from './projects'
-import Skills from './skill'
-import Contact from './contact'
-import Pok from './pok'
+import About from '../components/About'
+import Projects from '../components/Projects'
+import Skills from '../components/Skill'
+import Contact from '../components/Contact'
+import Pok from '../components/PoK'
 
 import { 
-  Container,
-  Box 
+  Container
 } from '@chakra-ui/react'
 
 const Home: NextPage = () => {
@@ -17,11 +16,11 @@ const Home: NextPage = () => {
     <>
       <Container maxW={'6xl'}>
         <Navbar/>
-        <AboutPage/>
-        <ProjectsPage />
-        <Skills />
+        <About/>
+        <Projects/>
+        <Skills/>
         <Pok/>
-        <Contact />
+        <Contact/>
         <Footer/>
       </Container>
     </>

@@ -34,6 +34,7 @@ const Footer = () => {
         cursor={'pointer'}
         as={'a'}
         href={href}
+        target='_blank'
         display={'inline-flex'}
         alignItems={'center'}
         justifyContent={'center'}
@@ -62,16 +63,16 @@ const Footer = () => {
             align={{ base: 'center', md: 'center' }}>
             <Text>© 2022 Web3 Junior.</Text>
             <Stack direction={'row'} spacing={6}>
-              <SocialButton label={'Instagram'} href={'#'}>
+              <SocialButton label={'Github'} href={'https://github.com/web3junior'}>
                 <FaGithub />
               </SocialButton>
-              <SocialButton label={'Twitter'} href={'#'}>
+              <SocialButton label={'Twitter'} href={'https://twitter.com/Web3Junior'}>
                 <FaTwitter />
               </SocialButton>
-              <SocialButton label={'LinkedIn'} href={'#'}>
+              <SocialButton label={'LinkedIn'} href={'https://www.linkedin.com/in/junior-web3-5a0335250/'}>
                 <FaLinkedinIn />
               </SocialButton>
-              <SocialButton label={'Upwork'} href={'#'}>
+              <SocialButton label={'Upwork'} href={'https://www.upwork.com/freelancers/~0161090ff5f68211b9'}>
                 <SiUpwork />
               </SocialButton>
             </Stack>

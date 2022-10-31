@@ -13,32 +13,40 @@ import { ImGithub, ImSphere } from "react-icons/im";
 const IMAGE = '/project1.png';
 
 const projects = [
-  // {
-  //   title: 'NFT Gallery',
-  //   thumbnail: '/projects/nft-gallery.png'
-  // },
   {
     title: 'NFT Minter',
-    thumbnail: '/projects/nft-minter.png'
+    thumbnail: '/projects/nft-minter.png',
+    source: 'https://github.com/web3junior/NFT-Minter',
+    live: 'https://w3j-nft-minter.vercel.app/',
+    stack: 'Solidity, Reactjs'
   },
   {
     title: 'Buy Me A Hamburger',
-    thumbnail: '/projects/buy-me-aburger.png'
+    thumbnail: '/projects/buy-me-aburger.png',
+    source: 'https://github.com/web3junior/BuyMeABurger',
+    live: 'https://buy-me-aburger.vercel.app/',
+    stack: 'Solidity, Reactjs'
   },
   {
     title: 'Buffalo Meme Coin',
-    thumbnail: '/projects/buffalo-coin.JPG'
+    thumbnail: '/projects/buffalo-coin.JPG',
+    source: 'https://github.com/web3junior/Buffalo-Coin',
+    live: 'https://buffalo-coin.vercel.app/',
+    stack: 'Solidity, Vuejs'
   },
   {
     title: 'Piggy Bank Dapp',
-    thumbnail: '/projects/piggy-bank.JPG'
+    thumbnail: '/projects/piggy-bank.JPG',
+    source: 'https://github.com/web3junior/Piggy-Bank',
+    live: 'https://piggy-bank3.vercel.app/',
+    stack: 'Solidity, Reactjs'
   }
 ]
 
-const ProjectsPage = () => {
+const Projects = () => {
   return (
     <>
-      <Box p={0} mt={6}>
+      <Box p={0} mt={6} id='projects'>
         <Stack spacing={4} textAlign={'center'}>
           <Heading fontSize={'3xl'}>Projects</Heading>
         </Stack>
@@ -58,18 +66,6 @@ const ProjectsPage = () => {
                 rounded={'lg'}
                 pos={'relative'}
                 height={'230px'}
-                // _after={{
-                //   transition: 'all .3s ease',
-                //   content: '""',
-                //   w: 'full',
-                //   h: 'full',
-                //   pos: 'absolute',
-                //   top: 5,
-                //   left: 0,
-                //   backgroundImage: `url(${IMAGE})`,
-                //   filter: 'blur(15px)',
-                //   zIndex: -1,
-                // }}
                 _groupHover={{
                   _after: {
                     filter: 'blur(20px)',
@@ -85,14 +81,14 @@ const ProjectsPage = () => {
               </Box>
               <Stack pt={10} align={'center'}>
                 <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                  Javascript
+                  {i.stack}
                 </Text>
                 <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
                   {i.title}
                 </Heading>
                 <Stack direction={'row'} align={'center'}>
-                  <IconButton aria-label='Github link' icon={<ImGithub />} />
-                  <IconButton aria-label='Demo link' icon={<ImSphere />} />
+                  <a href={i.source} target='_blank'><IconButton aria-label='Github link' icon={<ImGithub />} /></a>
+                  <a href={i.live} target='_blank'><IconButton aria-label='Demo link' icon={<ImSphere />} /></a>
                 </Stack>
               </Stack>
             </Box>
@@ -103,4 +99,4 @@ const ProjectsPage = () => {
   );
 }
 
-export default ProjectsPage;
+export default Projects;

@@ -1,10 +1,6 @@
-import { ReactNode } from 'react';
 import {
   Flex,
-  Spacer,
   Box,
-  Heading,
-  ButtonGroup,
   Button,
   Stack,
   useColorMode,
@@ -13,13 +9,10 @@ import {
   HStack,
   IconButton,
   useDisclosure,
-  Container,
   useBreakpointValue,
   Text,
 } from '@chakra-ui/react'
 import {
-  MoonIcon,
-  SunIcon,
   HamburgerIcon,
   CloseIcon
 } from '@chakra-ui/icons';
@@ -31,7 +24,7 @@ const Navbar = () => {
 
   const Links = ['About', 'Projects', 'Skills', 'PoK', 'Contact'];
 
-  const NavLink = ({ children }: { children: ReactNode }) => (
+  const NavLink = ({ children }: { children: any }) => (
     <Link
       px={2}
       py={2}
@@ -40,49 +33,55 @@ const Navbar = () => {
         textDecoration: 'none',
         bg: useColorModeValue('gray.200', 'gray.700'),
       }}
-      href={'#'}>
+      href={`#${children.toLowerCase()}`}>
       {children}
     </Link>
   );
 
   return (
     <>
-      <Box>
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+      <Box 
+        position="fixed"
+        bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')}
+        backdropFilter="saturate(180%) blur(5px)" 
+        w="100%" 
+        padding={'0 15px'} 
+        left={0} 
+        zIndex={2}
+      >
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+          <IconButton
+            size={'md'}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ md: 'none' }}
+            onClick={isOpen ? onClose : onOpen}
+          />
+          <Text
+            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+            fontFamily={'heading'}
+            fontWeight={500}
+            color={useColorModeValue('gray.800', 'white')}>
+            <span style={{color: '#ba68c8', fontWeight: '700'}}>W3J</span> Profilio
+          </Text>
 
-        <IconButton
-          size={'md'}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label={'Open Menu'}
-          display={{ md: 'none' }}
-          onClick={isOpen ? onClose : onOpen}
-        />
-
-        <Text
-          textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-          fontFamily={'heading'}
-          fontWeight={500}
-          color={useColorModeValue('gray.800', 'white')}>
-          <span style={{color: '#f56565'}}>W3J</span> Profilio
-        </Text>
-
-        <Flex alignItems={'center'}>
-          <HStack spacing={8} alignItems={'center'}>
-            <HStack
-              as={'nav'}
-              spacing={4}
-              display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+          <Flex alignItems={'center'}>
+            <HStack spacing={8} alignItems={'center'}>
+              <HStack
+                as={'nav'}
+                spacing={4}
+                display={{ base: 'none', md: 'flex' }}>
+                {Links.map((link) => (
+                  <NavLink key={link}>{link}</NavLink>
+                ))}
+              </HStack>
             </HStack>
-          </HStack>
-          <Stack direction={'row'} spacing={7} ml={{base: '0', md: '12px'}}>
-            <Button onClick={toggleColorMode} p='0'>
-              {colorMode === 'light' ? <BsMoon /> : <BsSun />}
-            </Button>
-          </Stack>
-        </Flex>
+            <Stack direction={'row'} spacing={7} ml={{base: '0', md: '12px'}}>
+              <Button onClick={toggleColorMode} p='0'>
+                {colorMode === 'light' ? <BsMoon /> : <BsSun />}
+              </Button>
+            </Stack>
+          </Flex>
         </Flex>
         {isOpen ? (
         <Box pb={4} display={{ md: 'none' }}>

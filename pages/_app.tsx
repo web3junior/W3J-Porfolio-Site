@@ -1,11 +1,18 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import Head from 'next/head'
+
+const theme = extendTheme({
+  config: {
+    useSystemColorMode: true,
+    initialColorMode: "dark"
+  }
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Head>
         <title>Profolio - Web3 Junior</title>
       </Head>
